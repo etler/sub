@@ -95,6 +95,10 @@
     return Element;
   }());
 
+  constructElement = function(){
+    constructNode.apply(this, arguments);
+  }
+
   createElement = (function (constructor) {
     Element.prototype = constructor.prototype;
     function Element() {
@@ -106,7 +110,7 @@
   /*
    * HTMLElement
    */
-  var HTMLElement, attributeNameStartChar, attributeNameChar, attributeNameRegExp, attributeString, attributes, createHTMLElement;
+  var HTMLElement, attributeNameStartChar, attributeNameChar, attributeNameRegExp, attributeString, attributes, constructHTMLElement, createHTMLElement;
   HTMLElement = (function () {
     // Internals
     /* As specified at:
@@ -155,6 +159,10 @@
     return HTMLElement;
   }());
 
+  constructHTMLElement = function(){
+    constructElement.apply(this, arguments);
+  }
+
   createHTMLElement = (function (constructor) {
     HTMLElement.prototype = constructor.prototype;
     function HTMLElement() {
@@ -183,6 +191,10 @@
 
     return HTMLUnknownElement;
   }());
+
+  constructHTMLUnknownElement = function(){
+    constructHTMLElement.apply(this, arguments);
+  }
 
   createHTMLUnknownElement = (function (constructor) {
     HTMLUnknownElement.prototype = constructor.prototype;
@@ -300,7 +312,7 @@
 
     // Prototype
     HTMLDocument.prototype.createTextNode = createText;
-    HTMLDocument.prototype.createElement = createHTMLElement;
+    HTMLDocument.prototype.createElement = createHTMLUnknownElement;
 
     // Constructor
     function HTMLDocument() {
