@@ -173,7 +173,7 @@
   /*
    * HTMLUnknownElement
    */
-  var HTMLUnknownElement, constructHTMLUnknownElement, createHTMLUnknownElement;
+  var HTMLUnknownElement, createHTMLUnknownElement;
   HTMLUnknownElement = (function () {
     // Extension
     (function (child, parent) {
@@ -192,13 +192,11 @@
     return HTMLUnknownElement;
   }());
 
-  constructHTMLUnknownElement = function(){
-    constructHTMLElement.apply(this, arguments);
-  }
 
   createHTMLUnknownElement = (function (constructor) {
     HTMLUnknownElement.prototype = constructor.prototype;
     function HTMLUnknownElement() {
+      constructHTMLElement.apply(this, arguments);
     }
     return function () {return new HTMLUnknownElement(); };
   }(HTMLUnknownElement));
