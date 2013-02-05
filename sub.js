@@ -3,7 +3,7 @@
   /*
    * DOMException
    */
-  var DOMException, createDOMException;
+  var DOMException, constructDOMException, createDOMException;
   DOMException = (function () {
     // Extension
     (function (child, parent) {
@@ -43,7 +43,7 @@
   /*
    * Node
    */
-  var Node, createNode;
+  var Node, constructNode, createNode;
   Node = (function () {
     //Prototype
     Node.prototype.cloneNode = function () {};
@@ -58,6 +58,11 @@
     return Node;
   }());
 
+  constructNode = function () {
+    this.attributes = null;
+    this.parentNode = null;
+  }
+
   createNode = (function (constructor) {
     Node.prototype = constructor.prototype;
     function Node() {
@@ -71,7 +76,7 @@
   /*
    * Element
    */
-  var Element, createElement;
+  var Element, constructElement, createElement;
   Element = (function () {
     // Extension
     (function (child, parent) {
@@ -160,7 +165,7 @@
   /*
    * HTMLUnknownElement
    */
-  var HTMLUnknownElement, createHTMLUnknownElement;
+  var HTMLUnknownElement, constructHTMLUnknownElement, createHTMLUnknownElement;
   HTMLUnknownElement = (function () {
     // Extension
     (function (child, parent) {
@@ -189,7 +194,7 @@
   /*
    * CharacterData
    */
-  var CharacterData;
+  var CharacterData, constructCharacterData;
   CharacterData = (function () {
 
     // Extension
@@ -209,10 +214,20 @@
     return CharacterData;
   }());
 
+  constructCharacterData = function () {
+    constructNode.apply(this, arguments);
+    this.data = '';
+    Object.defineProperty(this, 'length', {
+      get: (function(){
+        return this.data.length;
+      }).bind(this)
+    })
+  }
+
   /*
    * Text
    */
-  var Text, createText;
+  var Text, constructText, createText;
   Text = (function () {
 
     // Extension
@@ -232,11 +247,17 @@
     return Text;
   }());
 
+  constructText = function (string) {
+    constructCharacterData.apply(this, arguments);
+    this.data = String(string);
+  }
+
   createText = (function (constructor) {
     Text.prototype = constructor.prototype;
     function Text() {
+      constructText.apply(this, arguments)
     }
-    return function () {return new Text(); };
+    return function (string) {return new Text(string); };
   }(Text));
 
   /*
@@ -265,7 +286,7 @@
   /*
    * HTMLDocument
    */
-  var HTMLDocument, createHTMLDocument;
+  var HTMLDocument, constructHTMLDocument, createHTMLDocument;
   HTMLDocument = (function () {
 
     // Extension
@@ -299,7 +320,7 @@
   /*
    * Window
    */
-  var Window, createWindow;
+  var Window, constructWindow, createWindow;
   Window = (function () {
     // Constructor
     function Window() {
