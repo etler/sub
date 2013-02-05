@@ -133,7 +133,7 @@
       }
       HTMLElement.prototype = parent.prototype;
       child.prototype = new HTMLElement();
-    }(HTMLElement, Node));
+    }(HTMLElement, Element));
 
     // Prototype
     (function () {
@@ -182,7 +182,7 @@
       }
       HTMLUnknownElement.prototype = parent.prototype;
       child.prototype = new HTMLUnknownElement();
-    }(HTMLUnknownElement, Node));
+    }(HTMLUnknownElement, HTMLElement));
 
     //Constructor
     function HTMLUnknownElement() {
