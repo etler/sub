@@ -13,6 +13,6 @@
     , "expect.js" : "*"
     , "mocha" : "*" },
   "scripts": {
-    "prepublish": "echo \"exports.window = require('./lib/DOM/Window').createWindow();window.exports = exports;\" | ./node_modules/.bin/browserify -o sub.js"
+    "prepublish": "./node_modules/.bin/browserify ./lib/index.js -o sub.js"
   }
 }
