@@ -8,6 +8,8 @@
   "repository" :
     { "type" : "git"
     , "url" : "git@github.com:etler/Sub.git" },
+  "dependencies" :
+    { "htmlparser": "~1.7.0" },
   "devDependencies" :
     { "browserify" : "~1.17.0"
     , "expect.js" : "*"
