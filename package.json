@@ -9,9 +9,9 @@
     { "type" : "git"
     , "url" : "git@github.com:etler/Sub.git" },
   "dependencies" :
-    { "htmlparser": "~1.7.0" },
+    { "htmlparser": "1.7.x" },
   "devDependencies" :
-    { "browserify" : "~1.17.0"
+    { "browserify" : "2.x.x"
     , "expect.js" : "*"
     , "mocha" : "*" },
   "scripts": {
