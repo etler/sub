@@ -7,7 +7,7 @@
   "main" : "./lib/index.js",
   "repository" :
     { "type" : "git"
-    , "url" : "git@github.com:etler/Sub.git" },
+    , "url" : "git@github.com:etler/sub.git" },
   "dependencies" :
     { "htmlparser": "1.7.x" },
   "devDependencies" :
