@@ -5,15 +5,19 @@
   "keywords" : [ "dom", "window", "environment", "html" , "browser" ],
   "author" : "Tim Etler <tmetler@gmail.com> (http://www.timetler.com)",
   "main" : "./lib/index.js",
-  "repository" :
-    { "type" : "git"
-    , "url" : "git@github.com:etler/sub.git" },
-  "dependencies" :
-    { "htmlparser": "1.7.x" },
-  "devDependencies" :
-    { "browserify" : "2.x.x"
-    , "expect.js" : "*"
-    , "mocha" : "*" },
+  "repository" : {
+    "type" : "git",
+    "url" : "git@github.com:etler/sub.git"
+  },
+  "dependencies" : {
+    "htmlparser": "1.7.x"
+  },
+  "devDependencies" : {
+    "browserify" : "2.x.x",
+    "expect.js" : "*",
+    "mocha" : "*",
+    "benchmark": "*"
+  },
   "scripts": {
     "prepublish": "./node_modules/.bin/browserify ./lib/index.js -o sub.js"
   }
