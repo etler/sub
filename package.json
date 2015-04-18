@@ -23,6 +23,11 @@
     "prepublish": "./node_modules/.bin/browserify ./lib/index.js -o sub.js"
   },
   "jshintConfig": {
-    "node": []
+    "globals": {
+      "window": true
+    },
+    "node": true,
+    "shadow": true,
+    "boss": true
   }
 }
