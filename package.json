@@ -16,9 +16,13 @@
     "browserify" : "2.x.x",
     "expect.js" : "*",
     "mocha" : "*",
-    "benchmark": "*"
+    "benchmark": "*",
+    "jshint": "*"
   },
   "scripts": {
     "prepublish": "./node_modules/.bin/browserify ./lib/index.js -o sub.js"
+  },
+  "jshintConfig": {
+    "node": []
   }
 }
