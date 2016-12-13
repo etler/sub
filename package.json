@@ -10,7 +10,7 @@
     "url" : "git@github.com:etler/sub.git"
   },
   "dependencies" : {
-    "htmlparser": "1.7.x"
+    "htmlparser2": "~3.9.2"
   },
   "devDependencies" : {
     "browserify" : "2.x.x",
